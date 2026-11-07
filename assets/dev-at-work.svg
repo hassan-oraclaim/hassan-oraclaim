@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    /* One 8s story: write the component, preview renders it, cursor clicks it, Lighthouse scores it */
+    .float    { animation: float 4s ease-in-out infinite; }
+    .line     { opacity: 0; animation: line 8s ease-out infinite; }
+    .skeleton { animation: skeleton 8s steps(1) infinite; }
+    .shimmer  { animation: shimmer 1s ease-in-out infinite; }
+    .card     { opacity: 0; animation: card 8s ease-out infinite; }
+    .btn      { animation: click 8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .cursor   { animation: cursor 8s ease-in-out infinite; }
+    .ring     { stroke-dasharray: 88; stroke-dashoffset: 88; animation: ring 8s ease-out infinite; }
+    .score    { opacity: 0; animation: score 8s steps(1) infinite; }
+    .bp1 { animation: z1 6s steps(1) infinite; }
+    .bp2 { animation: z2 6s steps(1) infinite; opacity: 0; }
+    .bp3 { animation: z3 6s steps(1) infinite; opacity: 0; }
+    .atom     { animation: spin 6s linear infinite; transform-box: fill-box; transform-origin: center; }
+    .hand-l   { animation: type .28s ease-in-out infinite alternate; }
+    .hand-r   { animation: type .28s ease-in-out .14s infinite alternate; }
+    .head     { animation: bob 1.6s ease-in-out infinite; transform-origin: 450px 140px; }
+    .steam    { animation: steam 2.4s ease-in infinite; opacity: 0; }
+    .steam.s2 { animation-delay: .8s; }
+    .steam.s3 { animation-delay: 1.6s; }
+    .blink    { animation: blink 1s steps(1) infinite; }
+    .bug      { animation: crawl 14s linear infinite; }
+    .legs     { animation: wiggle .2s linear infinite alternate; }
+
+    @keyframes float    { 50% { transform: translateY(-5px); } }
+    @keyframes line     { 0% { opacity: 0; } 4% { opacity: 1; } 88% { opacity: 1; } 96% { opacity: 0; } }
+    @keyframes skeleton { 0% { opacity: 1; } 48% { opacity: 0; } 96% { opacity: 1; } }
+    @keyframes shimmer  { 50% { opacity: .45; } }
+    @keyframes card     { 0%, 48% { opacity: 0; transform: translateY(6px); } 54%, 92% { opacity: 1; transform: none; } 97% { opacity: 0; } }
+    @keyframes click    { 0%, 70% { transform: scale(1); } 73% { transform: scale(.88); } 76%, 100% { transform: scale(1); } }
+    @keyframes cursor   { 0%, 52% { transform: translate(90px, 60px); } 70%, 76% { transform: translate(0, 0); } 92%, 100% { transform: translate(90px, 60px); } }
+    @keyframes ring     { 0%, 55% { stroke-dashoffset: 88; } 78%, 92% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 88; } }
+    @keyframes score    { 0% { opacity: 0; } 78% { opacity: 1; } 96% { opacity: 0; } }
+    @keyframes z1 { 0% { opacity: 1; } 33% { opacity: 0; } }
+    @keyframes z2 { 0% { opacity: 0; } 33% { opacity: 1; } 66% { opacity: 0; } }
+    @keyframes z3 { 0% { opacity: 0; } 66% { opacity: 1; } }
+    @keyframes spin     { to { transform: rotate(360deg); } }
+    @keyframes type     { to { transform: translateY(-4px); } }
+    @keyframes bob      { 50% { transform: rotate(2deg); } }
+    @keyframes steam    { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: .7; } 100% { opacity: 0; transform: translateY(-22px); } }
+    @keyframes blink    { 50% { opacity: 0; } }
+    @keyframes crawl    { from { transform: translateX(-200px); } to { transform: translateX(1000px); } }
+    @keyframes wiggle   { to { transform: translateY(1.5px); } }
+  </style>
+
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#1f2937" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e293b"/><stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="avatar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="320" rx="18" fill="#0d1117"/>
+  <rect width="900" height="320" rx="18" fill="url(#grid)" opacity=".6"/>
+
+  <!-- Browser preview: the component renders live -->
+  <g class="float">
+    <rect x="30" y="34" width="270" height="200" rx="10" fill="url(#screen)" stroke="#334155"/>
+    <rect x="30" y="34" width="270" height="26" rx="10" fill="#1f2937"/>
+    <circle cx="46" cy="47" r="4.5" fill="#f87171"/><circle cx="60" cy="47" r="4.5" fill="#fbbf24"/><circle cx="74" cy="47" r="4.5" fill="#34d399"/>
+    <rect x="88" y="40" width="140" height="14" rx="7" fill="#0f172a"/>
+    <text x="98" y="51" font-size="9" fill="#94a3b8">localhost:3000</text>
+    <rect x="236" y="40" width="56" height="14" rx="7" fill="#312e81"/>
+    <text class="bp1" x="264" y="51" font-size="9" fill="#c4b5fd" text-anchor="middle">320px</text>
+    <text class="bp2" x="264" y="51" font-size="9" fill="#c4b5fd" text-anchor="middle">768px</text>
+    <text class="bp3" x="264" y="51" font-size="9" fill="#c4b5fd" text-anchor="middle">1440px</text>
+
+    <g class="skeleton">
+      <g class="shimmer" fill="#334155">
+        <rect x="95" y="80" width="140" height="120" rx="10" fill="#1e293b"/>
+        <circle cx="120" cy="107" r="12"/>
+        <rect x="140" y="99" width="70" height="8" rx="4"/>
+        <rect x="140" y="113" width="50" height="6" rx="3"/>
+        <rect x="107" y="132" width="116" height="8" rx="4"/>
+        <rect x="107" y="166" width="116" height="22" rx="11"/>
+      </g>
+    </g>
+
+    <g class="card">
+      <rect x="95" y="80" width="140" height="120" rx="10" fill="#111827" stroke="#4c1d95"/>
+      <circle cx="120" cy="107" r="12" fill="url(#avatar)"/>
+      <text x="120" y="111" font-size="10" fill="#fff" text-anchor="middle">H</text>
+      <text x="140" y="106" font-size="11" fill="#f1f5f9">Hassan J.</text>
+      <text x="140" y="119" font-size="8" fill="#94a3b8">Frontend Engineer</text>
+      <rect x="107" y="132" width="34" height="14" rx="7" fill="#0c4a6e"/><text x="124" y="142" font-size="8" fill="#7dd3fc" text-anchor="middle">React</text>
+      <rect x="145" y="132" width="24" height="14" rx="7" fill="#1e3a8a"/><text x="157" y="142" font-size="8" fill="#93c5fd" text-anchor="middle">TS</text>
+      <rect x="173" y="132" width="32" height="14" rx="7" fill="#1f2937"/><text x="189" y="142" font-size="8" fill="#e5e7eb" text-anchor="middle">Next</text>
+      <rect class="btn" x="107" y="166" width="116" height="22" rx="11" fill="#7c3aed"/>
+      <text x="165" y="181" font-size="10" fill="#fff" text-anchor="middle">Ship it →</text>
+    </g>
+
+    <g class="cursor">
+      <path d="M178 172 l0 16 l4 -4 l3 7 l3 -1.5 l-3 -7 l5.5 0 Z" fill="#fff" stroke="#0d1117" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- Developer -->
+  <g class="head">
+    <circle cx="450" cy="110" r="34" fill="#fcd9b6"/>
+    <path d="M416 104 Q418 70 450 70 Q484 70 485 104 Q472 86 450 88 Q428 88 416 104Z" fill="#1f2937"/>
+    <path d="M410 112 Q410 62 450 62 Q490 62 490 112" fill="none" stroke="#a78bfa" stroke-width="6" stroke-linecap="round"/>
+    <rect x="402" y="104" width="14" height="24" rx="6" fill="#7c3aed"/>
+    <rect x="484" y="104" width="14" height="24" rx="6" fill="#7c3aed"/>
+    <circle cx="438" cy="114" r="3" fill="#1f2937"/><circle cx="462" cy="114" r="3" fill="#1f2937"/>
+    <path d="M440 128 Q450 133 460 128" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <path d="M400 230 Q400 160 450 156 Q500 160 500 230Z" fill="#7c3aed"/>
+  <text x="450" y="205" font-size="11" fill="#ede9fe" text-anchor="middle">&lt;/&gt;</text>
+
+  <!-- Desk + laptop with a spinning React atom -->
+  <rect x="320" y="232" width="560" height="10" rx="4" fill="#334155"/>
+  <path d="M380 232 L395 186 L505 186 L520 232Z" fill="#475569"/>
+  <g class="atom" fill="none" stroke="#61dafb" stroke-width="1.4">
+    <ellipse cx="450" cy="208" rx="13" ry="5"/>
+    <ellipse cx="450" cy="208" rx="13" ry="5" transform="rotate(60 450 208)"/>
+    <ellipse cx="450" cy="208" rx="13" ry="5" transform="rotate(-60 450 208)"/>
+    <circle cx="450" cy="208" r="2" fill="#61dafb" stroke="none"/>
+  </g>
+  <rect class="hand-l" x="398" y="220" width="22" height="12" rx="6" fill="#fcd9b6"/>
+  <rect class="hand-r" x="480" y="220" width="22" height="12" rx="6" fill="#fcd9b6"/>
+
+  <!-- Coffee -->
+  <rect x="555" y="200" width="30" height="32" rx="5" fill="#e2e8f0"/>
+  <path d="M585 208 Q597 208 597 216 Q597 224 585 224" fill="none" stroke="#e2e8f0" stroke-width="4"/>
+  <rect x="555" y="200" width="30" height="7" rx="3" fill="#78350f"/>
+  <path class="steam"    d="M563 194 q-4 -6 0 -12 q4 -6 0 -12" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+  <path class="steam s2" d="M571 194 q-4 -6 0 -12 q4 -6 0 -12" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+  <path class="steam s3" d="M579 194 q-4 -6 0 -12 q4 -6 0 -12" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Editor: Card.tsx writes itself -->
+  <g class="float" style="animation-delay:-2s" font-size="10.5">
+    <rect x="620" y="30" width="250" height="168" rx="10" fill="#111827" stroke="#334155"/>
+    <rect x="620" y="30" width="250" height="24" rx="10" fill="#1f2937"/>
+    <text x="634" y="46" font-size="10" fill="#e5e7eb">Card.tsx</text>
+    <text x="858" y="46" font-size="9" fill="#34d399" text-anchor="end">✓ compiled in 312ms</text>
+    <text class="line" x="634" y="72"  style="animation-delay:0s"><tspan fill="#c084fc">export function</tspan><tspan fill="#60a5fa"> Card</tspan><tspan fill="#e5e7eb">() {</tspan></text>
+    <text class="line" x="634" y="87"  style="animation-delay:.35s"><tspan fill="#c084fc">  return</tspan><tspan fill="#e5e7eb"> (</tspan></text>
+    <text class="line" x="634" y="102" style="animation-delay:.7s"><tspan fill="#94a3b8">    &lt;</tspan><tspan fill="#f472b6">article</tspan><tspan fill="#fbbf24"> className</tspan><tspan fill="#e5e7eb">=</tspan><tspan fill="#34d399">"card"</tspan><tspan fill="#94a3b8">&gt;</tspan></text>
+    <text class="line" x="634" y="117" style="animation-delay:1.05s"><tspan fill="#94a3b8">      &lt;</tspan><tspan fill="#60a5fa">Avatar</tspan><tspan fill="#fbbf24"> name</tspan><tspan fill="#e5e7eb">=</tspan><tspan fill="#34d399">"Hassan"</tspan><tspan fill="#94a3b8"> /&gt;</tspan></text>
+    <text class="line" x="634" y="132" style="animation-delay:1.4s"><tspan fill="#94a3b8">      &lt;</tspan><tspan fill="#60a5fa">Tags</tspan><tspan fill="#fbbf24"> items</tspan><tspan fill="#e5e7eb">={stack}</tspan><tspan fill="#94a3b8"> /&gt;</tspan></text>
+    <text class="line" x="634" y="147" style="animation-delay:1.75s"><tspan fill="#94a3b8">      &lt;</tspan><tspan fill="#60a5fa">Button</tspan><tspan fill="#94a3b8">&gt;</tspan><tspan fill="#e5e7eb">Ship it</tspan><tspan fill="#94a3b8">&lt;/</tspan><tspan fill="#60a5fa">Button</tspan><tspan fill="#94a3b8">&gt;</tspan></text>
+    <text class="line" x="634" y="162" style="animation-delay:2.1s"><tspan fill="#94a3b8">    &lt;/</tspan><tspan fill="#f472b6">article</tspan><tspan fill="#94a3b8">&gt;</tspan></text>
+    <text class="line" x="634" y="177" style="animation-delay:2.45s"><tspan fill="#e5e7eb">  );</tspan></text>
+    <text class="line" x="634" y="192" style="animation-delay:2.8s"><tspan fill="#e5e7eb">}</tspan><tspan class="blink" fill="#a78bfa"> ▍</tspan></text>
+  </g>
+
+  <!-- Lighthouse rings -->
+  <g font-size="8" text-anchor="middle">
+    <g transform="translate(655 228)">
+      <circle r="14" fill="none" stroke="#1f2937" stroke-width="4"/>
+      <circle class="ring" r="14" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round" transform="rotate(-90)"/>
+      <text class="score" y="3" fill="#34d399">100</text><text y="27" fill="#94a3b8">Perf</text>
+    </g>
+    <g transform="translate(714 228)">
+      <circle r="14" fill="none" stroke="#1f2937" stroke-width="4"/>
+      <circle class="ring" r="14" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round" transform="rotate(-90)" style="animation-delay:.15s"/>
+      <text class="score" y="3" fill="#34d399">100</text><text y="27" fill="#94a3b8">A11y</text>
+    </g>
+    <g transform="translate(773 228)">
+      <circle r="14" fill="none" stroke="#1f2937" stroke-width="4"/>
+      <circle class="ring" r="14" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round" transform="rotate(-90)" style="animation-delay:.3s"/>
+      <text class="score" y="3" fill="#34d399">100</text><text y="27" fill="#94a3b8">Best</text>
+    </g>
+    <g transform="translate(832 228)">
+      <circle r="14" fill="none" stroke="#1f2937" stroke-width="4"/>
+      <circle class="ring" r="14" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round" transform="rotate(-90)" style="animation-delay:.45s"/>
+      <text class="score" y="3" fill="#34d399">100</text><text y="27" fill="#94a3b8">SEO</text>
+    </g>
+  </g>
+
+  <!-- The Safari bug -->
+  <g class="bug">
+    <g transform="translate(0 290)">
+      <g class="legs" stroke="#f87171" stroke-width="2" stroke-linecap="round">
+        <line x1="-8" y1="-4" x2="-14" y2="-10"/><line x1="0" y1="-5" x2="0" y2="-12"/><line x1="8" y1="-4" x2="14" y2="-10"/>
+        <line x1="-8" y1="4" x2="-14" y2="10"/><line x1="0" y1="5" x2="0" y2="12"/><line x1="8" y1="4" x2="14" y2="10"/>
+      </g>
+      <ellipse cx="0" cy="0" rx="13" ry="8" fill="#ef4444"/>
+      <circle cx="15" cy="0" r="5" fill="#b91c1c"/>
+      <text x="26" y="4" font-size="11" fill="#fca5a5">only reproduces in Safari</text>
+    </g>
+  </g>
+</svg>
